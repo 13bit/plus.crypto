@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Crypto App</title>
+
+    <!--Libs-->
+    <script src="libs/angular/angular.js"></script>
+    <script src="libs/simplemde/dist/simplemde.min.js"></script>
+    <script src="libs/simplemde-angular/dist/simplemde-angular.js"></script>
+
+    <!--App-->
+    <script src="app/index.js"></script>
+
+    <link rel="stylesheet" href="libs/simplemde/dist/simplemde.min.css">
+</head>
+<body ng-app="CryptoApp">
+    <div style="width: 800px;">
+        <textarea simplemde ng-model="text"></textarea>
+    </div>
+</body>
+</html>
