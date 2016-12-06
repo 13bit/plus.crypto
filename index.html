@@ -11,6 +11,9 @@
     <script src="libs/angular/angular.js"></script>
     <script src="libs/simplemde/dist/simplemde.min.js"></script>
     <script src="libs/simplemde-angular/dist/simplemde-angular.js"></script>
+    <script src="libs/angular-file-saver/dist/angular-file-saver.js"></script>
+    <script src="libs/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
+
 
     <!--App-->
     <script src="app/index.js"></script>
@@ -18,8 +21,21 @@
     <link rel="stylesheet" href="libs/simplemde/dist/simplemde.min.css">
 </head>
 <body ng-app="CryptoApp">
-    <div style="width: 800px;">
-        <textarea simplemde ng-model="text"></textarea>
+    <div ng-controller="CryptoCtrl">
+        <div style="width: 800px;">
+            <textarea simplemde ng-model="text"></textarea>
+        </div>
+        <div>
+            <button ng-click="download()">Create file</button>
+        </div>
+        <div>
+            Select file to upload:
+            <br>
+            <input type="file" name="file" id="file" ng-model="file">
+            <button ng-click="add()">Add</button>
+        </div>
+
     </div>
+
 </body>
 </html>
