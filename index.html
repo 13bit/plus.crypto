@@ -13,29 +13,74 @@
     <script src="libs/simplemde-angular/dist/simplemde-angular.js"></script>
     <script src="libs/angular-file-saver/dist/angular-file-saver.js"></script>
     <script src="libs/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
-
+    <script src="libs/openpgp/dist/openpgp.js"></script>
 
     <!--App-->
     <script src="app/index.js"></script>
+    <script src="app/OpenpgpService.js"></script>
 
     <link rel="stylesheet" href="libs/simplemde/dist/simplemde.min.css">
+    <style>
+        .generate {
+            margin: 0.5em 0;
+            border: 1px #000 solid;
+            padding: 1em 0.2em;
+        }
+
+        .upload-button {
+            margin: 0.4em 0em;
+        }
+
+        .block-header {
+            margin: 0em 0em 0.4em;
+        }
+    </style>
 </head>
 <body ng-app="CryptoApp">
-    <div ng-controller="CryptoCtrl">
-        <div style="width: 800px;">
-            <textarea simplemde ng-model="text"></textarea>
-        </div>
-        <div>
-            <button ng-click="download()">Create file</button>
-        </div>
-        <div>
-            Select file to upload:
-            <br>
-            <input type="file" name="file" id="file" ng-model="file">
-            <button ng-click="add()">Add</button>
-        </div>
-
+<div ng-controller="CryptoCtrl">
+    <!--Editor-->
+    <div style="width: 800px;">
+        <textarea simplemde ng-model="text"></textarea>
     </div>
+
+    <!--Download-->
+    <div class="generate">
+        <h4 class="block-header">Download or upload</h4>
+        <button ng-click="downloadFile()">Download file</button>
+        <div>
+            Select document:
+            <input type="file" name="file" id="file" ng-model="file">
+            <button ng-click="uploadFile()">Upload file</button>
+        </div>
+    </div>
+
+    <div class="generate">
+        <h4 class="block-header">Encrypt file</h4>
+        <button ng-if="!privateKey && !publicKey" ng-click="generateKey()">Generate keys</button>
+        <div class="upload-button">
+            Select public key:
+            <input type="file" name="enc-file" id="pubk-file">
+            <button ng-click="uploadPublicKey()">Upload public key</button>
+        </div>
+        <button ng-if="publicKey" ng-click="encryptFile()">Encrypt and download file</button>
+        <button ng-if="privateKey && publicKey" ng-click="downloadKeys()">Download Keys</button>
+    </div>
+
+    <div class="generate">
+        <h4 class="block-header">Decrypt file</h4>
+        <div class="upload-button">
+            Select encrypted file:
+            <input type="file" name="enc-file" id="enc-file">
+            <button ng-click="decryptFile()">Upload encrypted file</button>
+        </div>
+        <div class="upload-button">
+            Select private key:
+            <input type="file" name="enc-file" id="pk-file">
+            <button ng-click="uploadPrivateKey()">Upload private key</button>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>

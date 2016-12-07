@@ -17,6 +17,7 @@
     "angular-ui-router": "^0.3.2",
     "simplemde": "^1.11.2",
     "simplemde-angular": "^0.0.3",
-    "angular-file-saver": "^1.1.2"
+    "angular-file-saver": "^1.1.2",
+    "openpgp": "^2.3.5"
   }
 }
